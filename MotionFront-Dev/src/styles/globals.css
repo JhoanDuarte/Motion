@@ -1,0 +1,37 @@
+:root {
+  --homePageTitle-color: #00249C;
+  --homePageLinks-color: #40CEE4;
+  --homePageLinks-hover: #35abbd;
+  --text-color: #C5C5C5;
+  --linesAndBg-bgColor: #E280BE;
+  --cancelButton-border: #C6007E;
+  --background: #FFFFFF;
+  --text-color2: #000000;
+}
+
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
