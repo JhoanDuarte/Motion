@@ -1,19 +1,19 @@
-runtime: python39  # Especifica la versión de Python que estás utilizando
+runtime: python39
 entrypoint: gunicorn -b :$PORT app:app
 
 handlers:
   - url: /.*
-    script: auto  # Permite que el framework maneje las solicitudes automáticamente
+    script: auto
 
-env: standard  # Define el entorno como estándar
+env: standard
 
 automatic_scaling:
-  target_cpu_utilization: 0.65  # Proporción de CPU objetivo para escalar
-  min_instances: 1  # Número mínimo de instancias
-  max_instances: 10  # Número máximo de instancias
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 10
 
 env_variables:
-  DB_USER: "root"  # Cambia 'tu_usuario' por el usuario de tu base de datos
-  DB_PASSWORD: ""  # Cambia 'tu_contraseña' por la contraseña de tu base de datos
-  DB_HOST: "35.238.188.101"  # Cambia 'ip_de_tu_instancia' por la IP de tu instancia de Cloud SQL
-  DB_NAME: "motion"  # Nombre de tu base de datos
+  DB_USER: "brayan"
+  DB_PASSWORD: "brayan0175"
+  DB_HOST: "35.238.188.101"
+  DB_NAME: "motion"
