@@ -69,4 +69,4 @@ async def delete(id: int):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="localhost", port=5000)
+    uvicorn.run(app, host="35.238.188.101", port=3306)
