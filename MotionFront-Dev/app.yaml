@@ -1,0 +1,10 @@
+runtime: nodejs18 # O la versión que estés utilizando
+instance_class: F2 # Cambia según la necesidad de tu aplicación
+
+handlers:
+  - url: /
+    static_files: .next/static
+    upload: .next/static
+
+  - url: /(.*)
+    script: auto
