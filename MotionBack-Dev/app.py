@@ -6,6 +6,8 @@ from pydantic import BaseModel
 from typing import List
 from controller.motionController import RecordController
 from dotenv import load_dotenv
+from schemas import RecordCreate, RecordUpdate, Record
+
 
 load_dotenv()
 
