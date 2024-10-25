@@ -49,7 +49,7 @@ class Record(BaseModel):
 
 app = FastAPI()
 
-app.add_middleware(
+aapp.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
@@ -92,6 +92,9 @@ async def create(record: RecordCreate):
     try:
         controller.create(cursor, record.brand, record.location, record.candidate)
         return {"message": "Registro creado exitosamente"}
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Error al crear el registro")
     finally:
         cursor.close()  
         conn.close() 
