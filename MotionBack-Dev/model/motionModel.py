@@ -2,28 +2,27 @@ from config.db import conn, cursor
 
 class RecordModel:
     def __init__(self):
-        self.conn = conn
-        self.cursor = cursor
+        pass  
 
-    def getAll(self):
-        self.cursor.execute("SELECT * FROM records")
-        return self.cursor.fetchall()
+    def getAll(self, cursor):
+        cursor.execute("SELECT * FROM records")
+        return cursor.fetchall()
 
-    def getById(self, id):
-        self.cursor.execute("SELECT * FROM records WHERE id = %s", (id,))
-        return self.cursor.fetchone()
+    def getById(self, cursor, id):
+        cursor.execute("SELECT * FROM records WHERE id = %s", (id,))
+        return cursor.fetchone()
 
-    def create(self, brand, location, candidate):
-        self.cursor.execute("INSERT INTO records (brand, location, candidate) VALUES (%s, %s, %s)", (brand, location, candidate))
-        self.conn.commit()
-        return self.cursor.lastrowid
+    def create(self, cursor, brand, location, candidate):
+        cursor.execute("INSERT INTO records (brand, location, candidate) VALUES (%s, %s, %s)", (brand, location, candidate))
+        cursor.connection.commit()  
+        return cursor.lastrowid
 
-    def update(self, id, brand, location, candidate):
-        self.cursor.execute("UPDATE records SET brand = %s, location = %s, candidate = %s WHERE id = %s", (brand, location, candidate, id))
-        self.conn.commit()
-        return self.cursor.rowcount
+    def update(self, cursor, id, brand, location, candidate):
+        cursor.execute("UPDATE records SET brand = %s, location = %s, candidate = %s WHERE id = %s", (brand, location, candidate, id))
+        cursor.connection.commit()  
+        return cursor.rowcount
 
-    def delete(self, id):
-        self.cursor.execute("DELETE FROM records WHERE id = %s", (id,))
-        self.conn.commit()
-        return self.cursor.rowcount
+    def delete(self, cursor, id):
+        cursor.execute("DELETE FROM records WHERE id = %s", (id,))
+        cursor.connection.commit() 
+        return cursor.rowcount
