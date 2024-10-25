@@ -11,10 +11,11 @@ class RecordController:
         return self.model.getById(cursor, id)
     
     def create(self, cursor, record: RecordCreate):
-    return self.model.create(cursor, record.brand, record.location, record.candidate)
-
-    def update(self, id, brand, location, candidate):
-        return self.model.update(cursor, id, brand, location, candidate) > 0
-
-    def delete(self, id):
+        return self.model.create(cursor, record.brand, record.location, record.candidate)
+    
+    def update(self, cursor, id, record: RecordUpdate):
+        return self.model.update(cursor, id, record.brand, record.location, record.candidate) > 0
+    
+    def delete(self, cursor, id):
         return self.model.delete(cursor, id) > 0
+
