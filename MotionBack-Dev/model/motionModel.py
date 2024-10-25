@@ -2,7 +2,7 @@ from config.db import conn, cursor
 
 class RecordModel:
     def __init__(self):
-        pass  
+        pass
 
     def getAll(self, cursor):
         cursor.execute("SELECT * FROM records")
@@ -14,16 +14,16 @@ class RecordModel:
 
     def create(self, cursor, brand, location, candidate):
         cursor.execute("INSERT INTO records (brand, location, candidate) VALUES (%s, %s, %s)", (brand, location, candidate))
-        cursor.connection.commit() 
+        # Usa el commit() en la conexión, no en el cursor
+        cursor.connection.commit()  # Cambiar a conn.commit() en el archivo principal app.py
         return cursor.lastrowid
 
-    def update(self, id, brand, location, candidate):
+    def update(self, cursor, id, brand, location, candidate):
         cursor.execute("UPDATE records SET brand = %s, location = %s, candidate = %s WHERE id = %s", (brand, location, candidate, id))
-        cursor.connection.commit()  
+        cursor.connection.commit()  # Cambiar a conn.commit() en el archivo principal app.py
         return cursor.rowcount
 
     def delete(self, cursor, id):
         cursor.execute("DELETE FROM records WHERE id = %s", (id,))
-        cursor.connection.commit() 
+        cursor.connection.commit()  # Cambiar a conn.commit() en el archivo principal app.py
         return cursor.rowcount
-
