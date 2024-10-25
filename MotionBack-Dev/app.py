@@ -90,7 +90,7 @@ async def create(record: RecordCreate):
     conn = get_db_connection()
     cursor = conn.cursor() 
     try:
-        controller.create(record.brand, record.location, record.candidate)
+        controller.create(cursor, record)  # Pasar el cursor aquí
         return {"message": "Registro creado exitosamente"}
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -104,7 +104,7 @@ async def update(id: int, record: RecordUpdate):
     conn = get_db_connection()
     cursor = conn.cursor() 
     try:
-        updated = controller.update(id, record.brand, record.location, record.candidate)
+        updated = controller.update(cursor, id, record)  # Pasar el cursor aquí
         if updated:
             return {"message": "Registro actualizado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
@@ -117,13 +117,14 @@ async def delete(id: int):
     conn = get_db_connection()
     cursor = conn.cursor()  
     try:
-        deleted = controller.delete(id)
+        deleted = controller.delete(cursor, id)  # Pasar el cursor aquí
         if deleted:
             return {"message": "Registro eliminado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
         cursor.close()  
         conn.close()  
+
 
 if __name__ == "__main__":
     import uvicorn
