@@ -22,9 +22,9 @@ export default function Home() {
         <ul>
           <li><Link target="_blank" rel="noopener noreferrer" href={'https://monitoringinnovation.com/'} className={styles.textLink}>MONITORINGINNOVATION</Link></li>
           <li><Link target="_blank" rel="noopener noreferrer" href={'https://gpscontrol.co/'} className={styles.textLink}>GPS CONTROL</Link></li>
-          <li><Link target="_self" rel="noopener noreferrer" href={'http://localhost:3000/management'} className={styles.textLink}>CRUD</Link></li>
-          <li><Link target="_blank" rel="noopener noreferrer" href={'https://github.com/BDuarte0175/MotionFrontend'} className={styles.textLink}>Link repo front</Link></li>
-          <li><Link target="_blank" rel="noopener noreferrer" href={'https://github.com/BDuarte0175/MotionBackend'} className={styles.textLink}>Link repo back</Link></li>
+          <li><Link target="_self" rel="noopener noreferrer" href={'https://proyect-motion.netlify.app/management'} className={styles.textLink}>CRUD</Link></li>
+          <li><Link target="_blank" rel="noopener noreferrer" href={'https://github.com/JhoanDuarte/Motion/tree/main/MotionFront-Dev'} className={styles.textLink}>Link repo front</Link></li>
+          <li><Link target="_blank" rel="noopener noreferrer" href={'https://github.com/JhoanDuarte/Motion/tree/main/MotionBack-Dev'} className={styles.textLink}>Link repo back</Link></li>
         </ul>
       </div>
     </div>
