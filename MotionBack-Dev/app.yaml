@@ -13,8 +13,8 @@ automatic_scaling:
   max_instances: 10
 
 env_variables:
-  DB_USER: "root"
-  DB_PASSWORD: "brayan1997"
-  DB_HOST: "34.176.155.210"
-  DB_PORT: "3306"
-  DB_NAME: "motion"
+  DB_USER: "${DB_USER}"  # Cambiar a variables de entorno
+  DB_PASSWORD: "${DB_PASSWORD}"
+  DB_HOST: "${DB_HOST}"
+  DB_PORT: "${DB_PORT}"
+  DB_NAME: "${DB_NAME}"
