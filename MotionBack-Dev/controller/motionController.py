@@ -4,17 +4,17 @@ class RecordController:
     def __init__(self):
         self.model = RecordModel()
 
-    def getAll(self):
-        return self.model.getAll()
+    def getAll(self, cursor):
+        return self.model.getAll(cursor)
     
-    def getById(self, id):
-        return self.model.getById(id)
+    def getById(self, cursor, id):
+        return self.model.getById(cursor, id)
     
-    def create(self, brand, location, candidate):
-        return self.model.create(brand, location, candidate)
+    def create(self, cursor, brand, location, candidate):
+        return self.model.create(cursor, brand, location, candidate)
 
-    def update(self, id, brand, location, candidate):
-        return self.model.update(id, brand, location, candidate) > 0
+    def update(self, cursor, id, brand, location, candidate):
+        return self.model.update(cursor, id, brand, location, candidate) > 0
 
-    def delete(self, id):
-        return self.model.delete(id) > 0
+    def delete(self, cursor, id):
+        return self.model.delete(cursor, id) > 0
