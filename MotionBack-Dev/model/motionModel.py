@@ -14,8 +14,9 @@ class RecordModel:
 
     def create(self, cursor, brand, location, candidate):
         cursor.execute("INSERT INTO records (brand, location, candidate) VALUES (%s, %s, %s)", (brand, location, candidate))
-        cursor.connection.commit()  
-        return cursor.lastrowid
+        cursor.connection.commit() 
+        return cursor.lastrowid 
+
 
     def update(self, cursor, id, brand, location, candidate):
         cursor.execute("UPDATE records SET brand = %s, location = %s, candidate = %s WHERE id = %s", (brand, location, candidate, id))
