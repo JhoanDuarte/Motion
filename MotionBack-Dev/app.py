@@ -49,7 +49,7 @@ class Record(BaseModel):
 
 app = FastAPI()
 
-aapp.add_middleware(
+app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
