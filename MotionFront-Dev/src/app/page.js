@@ -21,7 +21,7 @@ export default function Home() {
         <ul>
           <li><Link target="_blank" rel="noopener noreferrer" href={'https://monitoringinnovation.com/'} className={styles.textLink}>MONITORINGINNOVATION</Link></li>
           <li><Link target="_blank" rel="noopener noreferrer" href={'https://gpscontrol.co/'} className={styles.textLink}>GPS CONTROL</Link></li>
-          <li><Link target="_self" rel="noopener noreferrer" href={'https://proyect-motion.netlify.app/management'} className={styles.textLink}>CRUD</Link></li>
+          <li><Link target="_self" rel="noopener noreferrer" href={'https://motion-page.netlify.app//management'} className={styles.textLink}>CRUD</Link></li>
           <li><Link target="_blank" rel="noopener noreferrer" href={'https://github.com/JhoanDuarte/Motion/tree/main/MotionFront-Dev'} className={styles.textLink}>Link repo front</Link></li>
           <li><Link target="_blank" rel="noopener noreferrer" href={'https://github.com/JhoanDuarte/Motion/tree/main/MotionBack-Dev'} className={styles.textLink}>Link repo back</Link></li>
         </ul>
