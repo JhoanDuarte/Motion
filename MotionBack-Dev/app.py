@@ -88,27 +88,24 @@ async def getById(id: int):
 @app.post("/records", response_model=dict)
 async def create(record: RecordCreate):
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor() 
     try:
-        controller.create(cursor, record)
-        conn.commit()
+        controller.create(cursor, conn, record)  # Pasar cursor y conexión aquí
         return {"message": "Registro creado exitosamente"}
     except Exception as e:
-        print(f"Error al crear el registro: {e}")
-        raise HTTPException(status_code=500, detail=f"Error al crear el registro: {str(e)}")
+        print(f"Error al crear el registro: {str(e)}")
+        raise HTTPException(status_code=500, detail="Error al crear el registro")
     finally:
-        cursor.close()
-        conn.close()
-
+        cursor.close()  
+        conn.close() 
 
 @app.put("/records/{id}", response_model=dict)
 async def update(id: int, record: RecordUpdate):
     conn = get_db_connection()
     cursor = conn.cursor() 
     try:
-        updated = controller.update(cursor, id, record)  # Pasar el cursor aquí
+        updated = controller.update(cursor, conn, id, record)
         if updated:
-            conn.commit()  # Realiza commit aquí en la conexión
             return {"message": "Registro actualizado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
@@ -120,9 +117,8 @@ async def delete(id: int):
     conn = get_db_connection()
     cursor = conn.cursor()  
     try:
-        deleted = controller.delete(cursor, id)  # Pasar el cursor aquí
+        deleted = controller.delete(cursor, conn, id)
         if deleted:
-            conn.commit()  # Realiza commit aquí en la conexión
             return {"message": "Registro eliminado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
