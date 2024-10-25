@@ -88,17 +88,18 @@ async def getById(id: int):
 @app.post("/records", response_model=dict)
 async def create(record: RecordCreate):
     conn = get_db_connection()
-    cursor = conn.cursor() 
+    cursor = conn.cursor()
     try:
-        controller.create(cursor, record)  # Pasar el cursor aquí
-        conn.commit()  # Realiza commit aquí en la conexión
+        controller.create(cursor, record)
+        conn.commit()
         return {"message": "Registro creado exitosamente"}
     except Exception as e:
-        print(f"Error: {str(e)}")
-        raise HTTPException(status_code=500, detail="Error al crear el registro")
+        print(f"Error al crear el registro: {e}")
+        raise HTTPException(status_code=500, detail=f"Error al crear el registro: {str(e)}")
     finally:
-        cursor.close()  
-        conn.close() 
+        cursor.close()
+        conn.close()
+
 
 @app.put("/records/{id}", response_model=dict)
 async def update(id: int, record: RecordUpdate):
