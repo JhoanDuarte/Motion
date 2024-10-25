@@ -30,7 +30,7 @@
 
 @keyframes wave {
   0% {
-    transform: translateX(65%) translateY(0);
+    transform: translateX(100%) translateY(0);
   }
 
   50% {
