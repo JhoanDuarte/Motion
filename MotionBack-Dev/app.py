@@ -7,9 +7,7 @@ from typing import List
 from controller.motionController import RecordController
 from dotenv import load_dotenv
 
-
 load_dotenv()
-
 
 db_config = {
     'host': os.getenv('DB_HOST'),
@@ -18,7 +16,6 @@ db_config = {
     'database': os.getenv('DB_NAME'),
     'port': int(os.getenv('DB_PORT')) 
 }
-
 
 def get_db_connection():
     try:
@@ -33,7 +30,6 @@ def get_db_connection():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         raise HTTPException(status_code=500, detail="Database connection failed")
-
 
 class RecordCreate(BaseModel):
     brand: str
@@ -51,9 +47,7 @@ class Record(BaseModel):
     location: str
     candidate: str
 
-
 app = FastAPI()
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -65,63 +59,70 @@ app.add_middleware(
 
 controller = RecordController()
 
-
-@app.get("/records", response_model=List[Record])
 @app.get("/records", response_model=List[Record])
 async def getAll():
     conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True) 
     try:
-        records = controller.getAll(conn)  # Pasa la conexión
+        records = controller.getAll(cursor)  
         if records:
             return records
         raise HTTPException(status_code=404, detail="No records found")
     finally:
-        conn.close()
+        cursor.close()  
+        conn.close()  
 
 @app.get("/records/{id}", response_model=Record)
 async def getById(id: int):
     conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)  
     try:
-        record = controller.getById(conn, id)  # Pasa la conexión
+        record = controller.getById(cursor, id)  
         if record:
             return record
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
-        conn.close()
+        cursor.close()  
+        conn.close()  
 
 @app.post("/records", response_model=dict)
 async def create(record: RecordCreate):
     conn = get_db_connection()
+    cursor = conn.cursor() 
     try:
-        controller.create(conn, record.brand, record.location, record.candidate)
+        controller.create(cursor, record.brand, record.location, record.candidate)
         return {"message": "Registro creado exitosamente"}
     finally:
-        conn.close()
+        cursor.close()  
+        conn.close() 
 
 @app.put("/records/{id}", response_model=dict)
 async def update(id: int, record: RecordUpdate):
     conn = get_db_connection()
+    cursor = conn.cursor() 
     try:
-        updated = controller.update(conn, id, record.brand, record.location, record.candidate)
+        updated = controller.update(cursor, id, record.brand, record.location, record.candidate)
         if updated:
             return {"message": "Registro actualizado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
-        conn.close()
+        cursor.close() 
+        conn.close()  
 
 @app.delete("/records/{id}", response_model=dict)
 async def delete(id: int):
     conn = get_db_connection()
+    cursor = conn.cursor()  
     try:
-        deleted = controller.delete(conn, id)
+        deleted = controller.delete(cursor, id)
         if deleted:
             return {"message": "Registro eliminado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
-        conn.close()
-
-
+        cursor.close()  
+        conn.close()  
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000) 
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
