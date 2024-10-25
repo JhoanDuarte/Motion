@@ -67,10 +67,11 @@ controller = RecordController()
 
 
 @app.get("/records", response_model=List[Record])
+@app.get("/records", response_model=List[Record])
 async def getAll():
     conn = get_db_connection()
     try:
-        records = controller.getAll(conn)
+        records = controller.getAll(conn)  # Pasa la conexión
         if records:
             return records
         raise HTTPException(status_code=404, detail="No records found")
@@ -81,7 +82,7 @@ async def getAll():
 async def getById(id: int):
     conn = get_db_connection()
     try:
-        record = controller.getById(conn, id)
+        record = controller.getById(conn, id)  # Pasa la conexión
         if record:
             return record
         raise HTTPException(status_code=404, detail="Record not found")
@@ -118,6 +119,7 @@ async def delete(id: int):
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
         conn.close()
+
 
 
 if __name__ == "__main__":
