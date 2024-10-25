@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export", // Asegúrate de que esto esté presente
     "start": "next start",
     "lint": "next lint"
-  },
+  }
   "dependencies": {
     "react": "19.0.0-rc-65a56d0e-20241020",
     "react-dom": "19.0.0-rc-65a56d0e-20241020",
