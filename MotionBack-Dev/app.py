@@ -91,6 +91,7 @@ async def create(record: RecordCreate):
     cursor = conn.cursor() 
     try:
         controller.create(cursor, record)  # Pasar el cursor aquí
+        conn.commit()  # Realiza commit aquí en la conexión
         return {"message": "Registro creado exitosamente"}
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -106,6 +107,7 @@ async def update(id: int, record: RecordUpdate):
     try:
         updated = controller.update(cursor, id, record)  # Pasar el cursor aquí
         if updated:
+            conn.commit()  # Realiza commit aquí en la conexión
             return {"message": "Registro actualizado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
@@ -119,6 +121,7 @@ async def delete(id: int):
     try:
         deleted = controller.delete(cursor, id)  # Pasar el cursor aquí
         if deleted:
+            conn.commit()  # Realiza commit aquí en la conexión
             return {"message": "Registro eliminado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
     finally:
