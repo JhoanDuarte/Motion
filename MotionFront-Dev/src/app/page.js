@@ -12,7 +12,7 @@ export default function Home() {
         </Link>
       </div>
       <div className={styles.imgPhone}>
-        <Image className={styles.img} src={'/images/Telefono-01.png'} alt="image-phone" width={390} height={450} />
+        <Image className={styles.img} src={'/images/Telefono-01.svg'} alt="image-phone" width={390} height={450} />
         <div className={styles.titleHomepage}>
           <h1 className={styles.titleTop}>BIENVENIDO A</h1>
           <h1 className={styles.titleBottom}>MONITORINGINNOVATION</h1>
