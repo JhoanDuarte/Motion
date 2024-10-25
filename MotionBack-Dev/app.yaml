@@ -13,8 +13,8 @@ automatic_scaling:
   max_instances: 10
 
 env_variables:
-  DB_USER: "${DB_USER}"  # Cambiar a variables de entorno
-  DB_PASSWORD: "${DB_PASSWORD}"
-  DB_HOST: "${DB_HOST}"
-  DB_PORT: "${DB_PORT}"
-  DB_NAME: "${DB_NAME}"
+  DB_USER: "${DB_USER}"   # Refiere a la variable de entorno DB_USER
+  DB_PASSWORD: "${DB_PASSWORD}"   # Refiere a la variable de entorno DB_PASSWORD
+  DB_HOST: "${DB_HOST}"   # Refiere a la variable de entorno DB_HOST
+  DB_PORT: "${DB_PORT}"   # Refiere a la variable de entorno DB_PORT
+  DB_NAME: "${DB_NAME}"   # Refiere a la variable de entorno DB_NAME
