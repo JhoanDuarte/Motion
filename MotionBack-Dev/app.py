@@ -90,7 +90,7 @@ async def create(record: RecordCreate):
     conn = get_db_connection()
     cursor = conn.cursor() 
     try:
-        controller.create(cursor, record.brand, record.location, record.candidate)
+        controller.create(record.brand, record.location, record.candidate)
         return {"message": "Registro creado exitosamente"}
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -104,7 +104,7 @@ async def update(id: int, record: RecordUpdate):
     conn = get_db_connection()
     cursor = conn.cursor() 
     try:
-        updated = controller.update(cursor, id, record.brand, record.location, record.candidate)
+        updated = controller.update(id, record.brand, record.location, record.candidate)
         if updated:
             return {"message": "Registro actualizado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
@@ -117,7 +117,7 @@ async def delete(id: int):
     conn = get_db_connection()
     cursor = conn.cursor()  
     try:
-        deleted = controller.delete(cursor, id)
+        deleted = controller.delete(id)
         if deleted:
             return {"message": "Registro eliminado exitosamente"}
         raise HTTPException(status_code=404, detail="Record not found")
