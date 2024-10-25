@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from controller.motionController import RecordController
+from dotenv import load_dotenv
+import os
 
 class RecordCreate(BaseModel):
     brand: str
@@ -21,6 +23,7 @@ class Record(BaseModel):
     location: str
     candidate: str
 
+db_port = os.getenv('DB_PORT')
 
 app = FastAPI()
 
@@ -69,4 +72,4 @@ async def delete(id: int):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="34.176.155.210", port=3306)
+    uvicorn.run(app, host="localhost", port= db_port)
