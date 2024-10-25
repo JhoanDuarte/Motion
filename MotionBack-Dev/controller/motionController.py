@@ -1,4 +1,6 @@
 from model.motionModel import RecordModel
+from pydantic import BaseModel  # Asegúrate de importar BaseModel
+from app import RecordCreate 
 
 class RecordController:
     def __init__(self):
