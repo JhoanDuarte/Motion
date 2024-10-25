@@ -13,7 +13,7 @@ automatic_scaling:
   max_instances: 10
 
 env_variables:
-  DB_USER: "brayan"
-  DB_PASSWORD: "brayan0175"
-  DB_HOST: "35.238.188.101"
+  DB_USER: "root"
+  DB_PASSWORD: "brayan1997"
+  DB_HOST: "34.176.155.210"
   DB_NAME: "motion"
