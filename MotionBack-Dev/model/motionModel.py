@@ -22,7 +22,8 @@ class RecordModel:
         cursor.connection.commit()  
         return cursor.rowcount
 
-    def delete(self, id):
+    def delete(self, cursor, id):
         cursor.execute("DELETE FROM records WHERE id = %s", (id,))
         cursor.connection.commit() 
         return cursor.rowcount
+
