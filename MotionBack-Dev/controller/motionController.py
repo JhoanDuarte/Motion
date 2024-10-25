@@ -1,4 +1,6 @@
 from model.motionModel import RecordModel
+from schemas import RecordCreate, RecordUpdate, Record
+
 
 class RecordController:
     def __init__(self):
