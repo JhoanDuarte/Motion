@@ -1,6 +1,4 @@
 from model.motionModel import RecordModel
-from pydantic import BaseModel  # Asegúrate de importar BaseModel
-from app import RecordCreate 
 
 class RecordController:
     def __init__(self):
@@ -12,10 +10,10 @@ class RecordController:
     def getById(self, cursor, id):
         return self.model.getById(cursor, id)
     
-    def create(self, cursor, record: RecordCreate):
+    def create(self, cursor, record):  # Cambia el tipo de `record` a genérico
         return self.model.create(cursor, record.brand, record.location, record.candidate)
     
-    def update(self, cursor, id, record: RecordUpdate):
+    def update(self, cursor, id, record):  # Cambia el tipo de `record` a genérico
         return self.model.update(cursor, id, record.brand, record.location, record.candidate) > 0
     
     def delete(self, cursor, id):
