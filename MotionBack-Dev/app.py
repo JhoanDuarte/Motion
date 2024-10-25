@@ -7,19 +7,19 @@ from typing import List
 from controller.motionController import RecordController
 from dotenv import load_dotenv
 
-# Cargar variables de entorno
+
 load_dotenv()
 
-# Configuración de la base de datos desde las variables de entorno
+
 db_config = {
     'host': os.getenv('DB_HOST'),
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASSWORD'),
     'database': os.getenv('DB_NAME'),
-    'port': int(os.getenv('DB_PORT'))  # Asegúrate de que el puerto sea un entero
+    'port': int(os.getenv('DB_PORT')) 
 }
 
-# Conectar a la base de datos
+
 def get_db_connection():
     try:
         conn = mysql.connector.connect(
@@ -34,7 +34,7 @@ def get_db_connection():
         print(f"Error: {err}")
         raise HTTPException(status_code=500, detail="Database connection failed")
 
-# Modelos
+
 class RecordCreate(BaseModel):
     brand: str
     location: str
@@ -51,10 +51,10 @@ class Record(BaseModel):
     location: str
     candidate: str
 
-# Iniciar FastAPI
+
 app = FastAPI()
 
-# Configuración de CORS
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -65,7 +65,7 @@ app.add_middleware(
 
 controller = RecordController()
 
-# Rutas de la API
+
 @app.get("/records", response_model=List[Record])
 async def getAll():
     conn = get_db_connection()
@@ -119,8 +119,7 @@ async def delete(id: int):
     finally:
         conn.close()
 
-# Correr la aplicación
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=db_config['port'])
-
+    uvicorn.run(app, host="0.0.0.0", port=8000) 
