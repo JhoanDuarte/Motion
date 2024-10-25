@@ -10,12 +10,13 @@ class RecordController:
     def getById(self, cursor, id):
         return self.model.getById(cursor, id)
     
-    def create(self, cursor, record):  # Cambia el tipo de `record` a genérico
-        return self.model.create(cursor, record.brand, record.location, record.candidate)
+    def create(self, cursor, conn, record: RecordCreate):
+        return self.model.create(cursor, conn, record.brand, record.location, record.candidate)
     
-    def update(self, cursor, id, record):  # Cambia el tipo de `record` a genérico
-        return self.model.update(cursor, id, record.brand, record.location, record.candidate) > 0
+    def update(self, cursor, conn, id, record: RecordUpdate):
+        return self.model.update(cursor, conn, id, record.brand, record.location, record.candidate)
     
-    def delete(self, cursor, id):
-        return self.model.delete(cursor, id) > 0
+    def delete(self, cursor, conn, id):
+        return self.model.delete(cursor, conn, id)
+
 
