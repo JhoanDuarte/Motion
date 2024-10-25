@@ -24,7 +24,7 @@
   z-index: 0;
 }
 
-.logo{
+.logo {
   width: 100%;
 }
 
@@ -58,24 +58,23 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end; */
+  align-items: flex-end;
   width: auto;
   color: var(--homePageTitle-color);
   text-transform: uppercase;
   top: calc(50% - 21%);
-  /*right: 25.5%;*/
-  left: -32%;
+  left: -59%;
 }
 
 .titleTop {
-  z-index: 2;
   font-size: 5rem;
+  z-index: 2;
 }
 
 .titleBottom {
-  z-index: 4;
   font-size: 3.3rem;
   margin-top: -17px;
+  z-index: 4;
 }
 
 .titleTop,
@@ -85,6 +84,10 @@
     -2px 2px 0 #ffffff,
     2px -2px 0 #ffffff,
     -2px -2px 0 #ffffff;
+}
+
+.links {
+  z-index: 999;
 }
 
 .links ul {
